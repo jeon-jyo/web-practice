@@ -217,7 +217,7 @@ public class PersonDao2 {
 		return count;
 	}
 	
-	// 리스트
+	// 목록
 	public List<PersonVo> personSelect() {
 
 		List<PersonVo> personList = new ArrayList<PersonVo>();

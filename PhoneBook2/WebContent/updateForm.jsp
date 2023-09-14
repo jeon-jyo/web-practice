@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.dao.PersonDao2"%>
+<%@ page import="com.javaex.dao.PersonDao"%>
 <%@ page import="com.javaex.vo.PersonVo"%>
 
 <%
-p
-
 	String id = request.getParameter("id");
 	int personId = Integer.parseInt(id);
 	
 	System.out.println("수정 번호 : " + personId);
 	
-	PersonDao2 personDao = new PersonDao2();
+	PersonDao personDao = new PersonDao();
 	PersonVo personVo = personDao.personSelectOne(personId);
 %>
 

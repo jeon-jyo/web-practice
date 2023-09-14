@@ -3,5 +3,56 @@
 
 <mapper namespace="phonebook">
 	<!-- 쿼리문 작성 -->
-
+	
+	<!-- 목록 -->
+	<select id="personSelect" resultType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			SELECT id
+				   ,name
+			       ,hp
+			       ,company
+			  FROM person
+			 ORDER BY id DESC
+		]]>
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="personDelete" parameterType="int">
+		<![CDATA[
+			DELETE FROM person
+			 WHERE id = #{personId}
+		]]>
+	</delete>
+	
+	<!-- 등록 -->
+	<insert id="personInsert" parameterType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			INSERT INTO person
+			VALUES (seq_person_id.NEXTVAL, #{name}, #{hp}, #{company})
+		]]>
+	</insert>
+	
+	<!-- 한 명 조회 -->
+	<select id="personSelectOne" parameterType="int" resultType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			SELECT id
+				   ,name
+			       ,hp
+			       ,company
+			  FROM person
+			 WHERE id = #{personId}
+		]]>
+	</select>
+	
+	<!-- 수정 -->
+	<update id="personUpdate" parameterType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			UPDATE person
+			   SET name = #{name}
+			       ,hp = #{hp}
+			       ,company = #{company}
+			 WHERE id = #{id}
+		]]>
+	</update>
+	
 </mapper>
