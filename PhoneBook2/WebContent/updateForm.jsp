@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.dao.PersonDao"%>
+<%@ page import="com.javaex.dao.PersonDao2"%>
 <%@ page import="com.javaex.vo.PersonVo"%>
 
 <%
+p
+
 	String id = request.getParameter("id");
 	int personId = Integer.parseInt(id);
 	
 	System.out.println("수정 번호 : " + personId);
 	
-	PersonDao personDao = new PersonDao();
+	PersonDao2 personDao = new PersonDao2();
 	PersonVo personVo = personDao.personSelectOne(personId);
 %>
 
@@ -30,6 +32,7 @@
 		이 름 : <input type="text" name="name" value="<%=personVo.getName()%>"><br>
 		전화번호 : <input type="text" name="hp" value="<%=personVo.getHp()%>"><br>
 		회사번호 : <input type="text" name="company" value="<%=personVo.getCompany()%>"><br><br>
+		
 		<button type="submit">수정</button><br><br>
 	</form>
 	

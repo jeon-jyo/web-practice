@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.dao.PersonDao"%>
+<%@ page import="com.javaex.dao.PersonDao2"%>
 <%@ page import="com.javaex.vo.PersonVo"%>
 
 <%
+p
+
 	String id = request.getParameter("id");
 	String name = request.getParameter("name");
 	String hp = request.getParameter("hp");
@@ -14,7 +16,7 @@
 	
 	System.out.println("수정 값 : " + personVo);
 	
-	PersonDao personDao = new PersonDao();
+	PersonDao2 personDao = new PersonDao2();
 	int count = personDao.personUpdate(personVo);
 	
 	if(count == 1) {

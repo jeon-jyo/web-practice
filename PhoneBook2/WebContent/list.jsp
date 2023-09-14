@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
-<%@ page import="com.javaex.dao.PersonDao"%>
+<%@ page import="com.javaex.dao.PersonDao2"%>
 <%@ page import="com.javaex.vo.PersonVo"%>
 
 <%
-	PersonDao personDao = new PersonDao();
+p
+
+	PersonDao2 personDao = new PersonDao2();
 	List<PersonVo> personList = personDao.personSelect();
 	
 	System.out.println("personList : " + personList);

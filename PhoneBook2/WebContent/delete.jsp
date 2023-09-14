@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.dao.PersonDao"%>
+<%@ page import="com.javaex.dao.PersonDao2"%>
 
 <%
+p
+
 	// 파라미터 꺼내기 (DB전달해서 삭제할 id값)
 	String id = request.getParameter("id");
 	int personId = Integer.parseInt(id);
 	
 	System.out.println("삭제 번호 : " + personId);
 	
-	PersonDao personDao = new PersonDao();
+	PersonDao2 personDao = new PersonDao2();
 	int count = personDao.personDelete(personId);
 	
 	if(count == 1) {

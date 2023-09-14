@@ -4,32 +4,53 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.javaex.vo.PersonVo;
 
-public class PersonDao {
+// 자동 연결 - 대상이 되는 곳은 @Repository
+@Repository
+public class PersonDao2 {
 
+	// 필드
+	// DataSource - 속도 개선
+	@Autowired
+	private DataSource dataSource;
+	
 	// 0. import java.sql.*;
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 
+	/*
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private String id = "webdb";
 	private String pw = "webdb";
-
+	*/
+	
+	// 메서드 - 일반
 	private void getConnection() {
 
 		try {
+			/*
 			// 1. JDBC 드라이버 (Oracle) 로딩
 			Class.forName(driver);
 
 			// 2. Connection 얻어오기
 			conn = DriverManager.getConnection(url, id, pw);
-
-		} catch (ClassNotFoundException e) {
+			*/
+			conn = dataSource.getConnection();
+		}
+		/*
+		catch (ClassNotFoundException e) {
 			System.out.println("error : 드라이버 로딩 실패 - " + e);
-		} catch (SQLException e) {
+		}
+		*/
+		catch (SQLException e) {
 			System.out.println("error : " + e);
 		}
 	}
