@@ -55,4 +55,68 @@
 		]]>
 	</update>
 	
+	<!-- ***************************** -->
+	<!-- Map 사용 예제 -->
+	
+	<!-- 등록 -->
+		<insert id="insert" parameterType="map">
+		<![CDATA[
+			INSERT INTO person
+			VALUES (seq_person_id.NEXTVAL, #{name}, #{hp}, #{company})
+		]]>
+	</insert>
+	
+	<!-- 한 명 조회 -->
+	<select id="selectOne" parameterType="int" resultType="map">
+		<![CDATA[
+			SELECT id AS pId
+				   ,name
+			       ,hp
+			       ,company
+			  FROM person
+			 WHERE id = #{personId}
+		]]>
+	</select>
+	
+	<!-- ***************************** -->
+	<!-- resultType 사용 예제 -->
+	
+	<!-- 
+		id : 			 [PersonVo2 [personId=0, ..]
+		id AS PersonId : [PersonVo2 [personId=45, ..]
+	-->
+	<!-- 목록 -->
+	<select id="select2" resultType="PersonVo2">
+		<![CDATA[
+			SELECT id AS PersonId
+				   ,name
+			       ,hp
+			       ,company
+			  FROM person
+			 ORDER BY id DESC
+		]]>
+	</select>
+	
+	<!-- ***************************** -->
+	<!-- resultMap 사용 예제 -->
+	
+	<resultMap id="resultMapSelect" type="PersonVo2">
+		<result column="id" property="personId"></result>
+		<result column="name" property="name"></result>
+		<result column="hp" property="hp"></result>
+		<result column="company" property="company"></result>
+	</resultMap>
+
+	<!-- 목록 -->
+	<select id="select" resultMap="resultMapSelect">
+		<![CDATA[
+			SELECT id
+				   ,name
+			       ,hp
+			       ,company
+			  FROM person
+			 ORDER BY id DESC
+		]]>
+	</select>
+	
 </mapper>
