@@ -1,6 +1,8 @@
 package com.javaex.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -43,7 +45,10 @@ public class BoardController {
 		System.out.println("BoardController.search()");
 		System.out.println("keyword : " + keyword);
 		
-		List<BoardVo> boardList = boardDao.searchList(keyword);
+		Map<String, String> word = new HashMap<String, String>();
+		word.put("word", keyword);
+		
+		List<BoardVo> boardList = boardDao.searchList(word);
 		
 		model.addAttribute("boardList", boardList);
 		

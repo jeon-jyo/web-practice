@@ -1,6 +1,7 @@
 package com.javaex.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,17 @@ public class BoardDao {
 		System.out.println("BoardDao.boardList()");
 		System.out.println("keyword : " + keyword);
 		
-		List<BoardVo> boardList = sqlSession.selectList("board.boardList2", keyword);
+		List<BoardVo> boardList = sqlSession.selectList("board.boardList", keyword);
 		System.out.println("boardList : " + boardList);
 		
 		return boardList;
 	}
 	
-	public List<BoardVo> searchList(String keyword) {
+	public List<BoardVo> searchList(Map<String, String> word) {
 		System.out.println("BoardDao.searchList()");
-		System.out.println("keyword : " + keyword);
+		System.out.println("word : " + word.get("word"));
 		
-		List<BoardVo> boardList = sqlSession.selectList("board.searchList", keyword);
+		List<BoardVo> boardList = sqlSession.selectList("board.searchList", word);
 		System.out.println("boardList : " + boardList);
 		
 		return boardList;
