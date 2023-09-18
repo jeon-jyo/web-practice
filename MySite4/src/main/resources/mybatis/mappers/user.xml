@@ -3,8 +3,6 @@
 
 <mapper namespace="user">
 	
-	<!-- 쿼리문 작성 -->
-	
 	<!-- 로그인 -->
 	<select id="selectAuthUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
 		<![CDATA[
@@ -15,5 +13,37 @@
 			   AND password = #{password}
 		]]>
 	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="userInsert" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			INSERT INTO users
+			VALUES (seq_users_id.NEXTVAL, #{id}, #{password}, #{name}, #{gender})
+		]]>
+	</insert>
+	
+	<!-- 유저 정보 조회 -->
+	<select id="selectUser" parameterType="int" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			SELECT no
+				   ,id
+				   ,password
+				   ,name
+				   ,gender
+			  FROM users
+			 WHERE no = #{no}
+		]]>
+	</select>
+	
+	<!-- 정보 수정 -->
+	<update id="userUpdate" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			UPDATE users
+			   SET password = #{password}
+				   ,name = #{name}
+				   ,gender = #{gender}
+			 WHERE no = #{no}
+		]]>
+	</update>
 
 </mapper>
