@@ -1,8 +1,6 @@
 package com.javaex.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.javaex.dao.BoardDao;
+import com.javaex.service.BoardService;
 import com.javaex.vo.BoardVo;
 import com.javaex.vo.UserVo;
 
@@ -24,14 +22,15 @@ import com.javaex.vo.UserVo;
 public class BoardController {
 
 	@Autowired
-	private BoardDao boardDao;
+	private BoardService boardService;
 	
 	// 게시판 목록
 	@RequestMapping(value="/list", method= { RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) {
 		System.out.println("BoardController.list()");
-		
-		List<BoardVo> boardList = boardDao.boardList("");
+
+		// boardService를 통해서 리스트를 가져온다 (boardDao 바로 X)
+		List<BoardVo> boardList =  boardService.boardList("");
 		
 		model.addAttribute("boardList", boardList);
 		
@@ -43,32 +42,15 @@ public class BoardController {
 	@RequestMapping(value="/search", method= { RequestMethod.GET, RequestMethod.POST})
 	public String search(@RequestParam(value="keyword") String keyword, Model model) {
 		System.out.println("BoardController.search()");
-		System.out.println("keyword : " + keyword);
 		
-		Map<String, String> word = new HashMap<String, String>();
-		word.put("word", keyword);
-		
-		List<BoardVo> boardList = boardDao.searchList(word);
+		List<BoardVo> boardList = boardService.boardList(keyword);
 		
 		model.addAttribute("boardList", boardList);
 		
 		// 게시판 목록 - 포워드
 		return "board/list";
 	}
-	
-	@RequestMapping(value="/search2", method= { RequestMethod.GET, RequestMethod.POST})
-	public String search2(@RequestParam(value="keyword") String keyword, Model model) {
-		System.out.println("BoardController.search2()");
-		System.out.println("keyword : " + keyword);
-		
-		List<BoardVo> boardList = boardDao.boardList(keyword);
-		
-		model.addAttribute("boardList", boardList);
-		
-		// 게시판 목록 - 포워드
-		return "board/list";
-	}
-	
+
 	// 게시판 작성폼
 	@RequestMapping(value="/writeForm", method= { RequestMethod.GET, RequestMethod.POST})
 	public String writeForm() {
@@ -84,16 +66,10 @@ public class BoardController {
 		System.out.println("BoardController.write()");
 
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		boardVo.setNo(authUser.getNo());
-		System.out.println("boardVo : " + boardVo);
+		boardVo.setUserNo(authUser);
 		
-		int count = boardDao.boardInsert(boardVo);
-		if(count == 1) {
-			System.out.println("등록 성공");
-		} else {
-			System.out.println("등록 실패");
-		}
-		
+		boardService.boardInsert(boardVo);
+
 		// 게시판 목록 - 리다이렉트
 		return "redirect:/board/list";
 	}
@@ -101,27 +77,27 @@ public class BoardController {
 	// 게시판 상세보기
 	@RequestMapping(value="/detail/{no}", method= { RequestMethod.GET, RequestMethod.POST})
 	public String detail(@PathVariable(value="no") int boardNo, Model model) {
-		System.out.println("BoardController.detail()"); 
+		System.out.println("BoardController.detail()");
 		
-		int count = boardDao.boardHitCount(boardNo);
-		if(count == 1) {
-			System.out.println("조회수 업데이트");
+		BoardVo boardVo = boardService.boardDetail(boardNo, true);
+		
+		if (boardVo != null) {
+			model.addAttribute("boardVo", boardVo);
+			
+			// 게시판 상세 - 포워드
+			return "board/read";
+		} else {
+			// 게시판 목록 - 리다이렉트
+			return "redirect:/board/list";
 		}
-		BoardVo boardVo = boardDao.boardDetail(boardNo);
-		
-		model.addAttribute("boardVo", boardVo);
-		
-		// 게시판 상세 - 포워드
-		return "board/read";
 	}
 	
 	// 게시판 수정폼
 	@RequestMapping(value="/modifyForm/{no}", method= { RequestMethod.GET, RequestMethod.POST})
 	public String modifyForm(@PathVariable(value="no") int boardNo, Model model) {
-		System.out.println("BoardController.modifyForm()"); 
+		System.out.println("BoardController.modifyForm()");
 		
-		BoardVo boardVo = boardDao.boardDetail(boardNo);
-		System.out.println("기존 정보 : " + boardVo);
+		BoardVo boardVo = boardService.boardDetail(boardNo, false);
 		
 		model.addAttribute("boardVo", boardVo);
 		
@@ -134,14 +110,7 @@ public class BoardController {
 	public String modify(@ModelAttribute BoardVo boardVo) {
 		System.out.println("BoardController.modify()"); 
 		
-		int count = boardDao.boardUpdate(boardVo);
-		if(count == 1) {
-			System.out.println("수정 성공");
-			System.out.println("변경 정보 : " + boardVo);
-			
-		} else {
-			System.out.println("수정 실패");
-		}
+		boardService.boardUpdate(boardVo);
 		
 		// 게시판 목록 - 리다이렉트
 		return "redirect:/board/list";
@@ -149,16 +118,11 @@ public class BoardController {
 	
 	// 게시판 삭제
 	@RequestMapping(value="/delete/{no}", method= { RequestMethod.GET, RequestMethod.POST})
-	public String delete(@PathVariable(value="no") int boardNo, Model model) {
+	public String delete(@PathVariable(value="no") int boardNo) {
 		System.out.println("BoardController.delete()"); 
 		
-		int count = boardDao.boardDelete(boardNo);
-		if(count == 1) {
-			System.out.println("삭제 성공");
-		} else {
-			System.out.println("삭제 실패");
-		}
-		
+		boardService.boardDelete(boardNo);
+
 		// 게시판 목록 - 리다이렉트
 		return "redirect:/board/list";
 	}
