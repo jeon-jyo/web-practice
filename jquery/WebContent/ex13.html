@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+<title>ex13</title>
+</head>
+<body>
+	
+	<!--$(this)-->
+	<ul>
+		<li id="first" class="red" data-bno="1" data-pno="5">첫번째 아이템입니다.</li>
+		<li id="second" class="blue" data-bno="2" data-pno="4"><strong>두번째 아이템입니다.</strong></li>
+		<li id="third" class="del" data-bno="3" data-pno="5">세번째아이템입니다.</li>
+		<li data-bNo="4" data-pNo="3"><strong>네번째 아이템입니다.</strong></li>
+	</ul>
+
+</body>
+
+<script type="text/javascript">
+	/*
+		$("#first").on("click", function() {
+			let id = $("#first").attr("id");
+			console.log("id : " + id);
+			
+			let clz = $("#first").attr("class");
+			console.log("class : " + clz);
+		})
+	*/
+	
+	$("li").on("click", function() {
+		console.log($("li"));	// jQuery.fn.init(4) [li#first.red, li#second.blue, li#third.del, li, prevObject: jQuery.fn.init(1), context: document, selector: 'li']
+		console.log($(this));	// jQuery.fn.init [li#first.red, context: li#first.red]
+		
+		console.log("=====");
+		
+		let id = $(this).attr("id");
+		console.log("id : " + id);		// id : first
+		
+		let clz = $(this).attr("class");
+		console.log("class : " + clz);	// class : red
+		
+		console.log("=====");
+		
+		/*
+			// $(this)로 객체를 새로 만들어 내고 있다
+			let bNo = $(this).data("bno");
+			let pNo = $(this).data("pno");
+			console.log("bNo : " + bNo);
+			console.log("pNo : " + pNo);
+			
+			let boardVo = {
+				bNo: bNo,
+				pNo: pNo
+			}
+			console.log("boardVo : " + boardVo);
+			console.log("this : " + $(this).text());
+		*/
+		
+		let $this = $(this);
+		let bNo = $this.data("bno");
+		let pNo = $this.data("pno");
+		
+		let boardVo = {
+			bNo: bNo,
+			pNo: pNo
+		}
+		console.log("boardVo : " + boardVo);	// boardVo : [object Object]
+		console.log("this : " + $this.text());	// this : 첫번째 아이템입니다.
+	})
+	
+</script>
+
+</html>

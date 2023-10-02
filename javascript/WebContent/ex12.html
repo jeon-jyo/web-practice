@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex12</title>
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>변수의 범위</h2>
+</body>
+
+<script type="text/javascript">
+	
+	window.console.log("========================================");
+
+	// 변수선언 대입 - 전역변수
+	var name = "global";
+	
+	// 함수정의
+	function checkscope() {
+		var name = "local";  // 지역변수
+		console.log(name);	 // local - 지역변수 사용
+	}
+	
+	// 함수실행
+	checkscope();
+	console.log(name);	// global - 전역변수 출력
+	
+	window.console.log("========================================");
+	
+	var str = "global";
+
+	function checkscope2() {  
+	    str = "local";	// 전역 변수의 값을 변경
+	    str2 = "로컬";	// 암묵적으로 새 전역 변수가 선언됨(주의)
+	}
+	
+	checkscope2();
+	console.log(str);      // local
+	console.log(str2);     // 로컬
+
+</script>
+
+</html>

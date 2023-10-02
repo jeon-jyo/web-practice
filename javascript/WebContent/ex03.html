@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex03</title>
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>문제</h2>
+	주어진 숫자가 60점 이상이면 "합격입니다."<br>
+	60점 미만이면 "불합격입니다." 를 브라우저에 출력하세요<br></br>
+</body>
+
+<script type="text/javascript">
+	
+	window.console.log("========================================");
+    
+	let point = prompt("점수를 입력하세요");
+	let number = parseInt(point);
+	console.log(number);
+	console.log(typeof number);
+	
+	if(number >= 60) {
+		console.log("합격입니다.");
+		document.write("합격입니다.");
+	} else {
+		console.log("불합격입니다.");
+		document.write("불합격입니다.");
+	}
+	
+</script>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex19</title>
+</head>
+<body>
+	<input id="left" class="red" type="text" value="">
+	+
+	<input id="right" type="text" value="">
+	
+	<br><br>
+	
+	<button id="btnPlus" class="red" type="button" value="+">더하기</button>
+
+	<p id="display">0</p>
+</body>
+
+<script type="text/javascript">
+
+	// 필요한 태그를 js 객체화
+	// 태그로 가져오기
+	let btn = document.getElementsByTagName("button");
+	console.log(btn);
+							/*
+								HTMLCollection [button#btnPlus.red, btnPlus: button#btnPlus.red]
+								
+								0: button#btnPlus.red	=> 배열 0번째 방
+							*/
+	
+	let inputs = document.getElementsByTagName("input");
+	console.log(inputs);
+							/*
+								HTMLCollection(2) [input#left.red, input#right, left: input#left.red, right: input#right]
+								
+								0: input#left.red
+								1: input#right
+							*/
+	console.log(inputs[0]);	// <input id="left" class="red" type="text" value>
+	console.log(inputs[1]);	// <input id="right" type="text" value>
+	
+	window.console.log("========================================");
+	
+	// 필요한 태그를 js 객체화
+	// 클래스로 가져오기
+	let tags = document.getElementsByClassName("red");
+	console.log(tags);
+							/*
+								HTMLCollection(2) [input#left.red, button#btnPlus.red, left: input#left.red, btnPlus: button#btnPlus.red]
+							*/
+	console.log(tags[0]);	// <input id="left" class="red" type="text" value>
+	console.log(tags[1]);	// <button id="btnPlus" class="red" type="button" value="+">더하기</button>
+	
+	window.console.log("========================================");
+	
+	// 이벤트 잡기
+	let btnPlus = document.getElementById("btnPlus");
+	let txtLeft = document.getElementById("left");
+	let txtRight = document.getElementById("right");
+	let pDisplay = document.getElementById("display");
+	
+	btnPlus.onclick = function() {
+		console.log("더하기버튼 클릭");
+		
+		// 왼쪽 input값 읽기
+		let leftNo = parseInt(txtLeft.value);
+		console.log(leftNo);
+		
+		// 오른쪽 input값 읽기
+		let rightNo = Number(txtRight.value);
+		console.log(rightNo);
+		
+		// 더하기
+		let sum = leftNo + rightNo;		// 문자열 + 주의
+		console.log(sum);
+		
+		// 디스플레이 영역에 출력하기
+		pDisplay.innerHTML = sum;
+	}
+	
+</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+
+<style>
+	.red {color: red;}
+	
+	.blue {color: blue;}
+</style>
+
+<title>ex11</title>
+</head>
+<body>
+
+	<!--val(), val("값")-->
+	이름:<input type="text" name="name"><br>
+	비밀번호:<input type="password" name="password"><br>
+	<textarea name="content"></textarea>
+	
+	<br><br>
+	
+	이름2:<input type="text" name="name2" value="홍길동"><br>
+	비밀번호2:<input type="password" name="password2" value="1234"><br>
+	<textarea name="content2">산토끼토끼야</textarea>
+	
+</body>
+
+<script type="text/javascript">
+	
+	$("[name=name]").val("황일영");	
+	$("[name=password]").val("1234");
+	$("[name=content]").val("내용내용내용");
+	
+	// 아래처럼 쓰지 말것
+	// $("[name=content]").text("내용");
+	
+	console.log($("[name=name2]").val());
+	console.log($("[name=password2]").val());
+	console.log($("[name=content2]").val());
+	
+	let guestbookVo = {
+		name: $("[name=name2]").val(),			// 홍길동
+		password: $("[name=password2]").val(),
+		content: $("[name=content2]").val()
+	}
+	console.log(guestbookVo);					// {name: '홍길동', password: '1234', content: '산토끼토끼야'}
+	
+</script>
+
+</html>

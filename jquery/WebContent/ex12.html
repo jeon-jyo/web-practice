@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+<title>ex12</title>
+</head>
+<body>
+
+	<div>
+		<h1 id="display">이름출력영역</h1>
+		<button id="btn" type="button">테스트버튼</button>
+	</div>
+
+</body>
+
+<script type="text/javascript">
+	
+	let testButton = $("#btn");
+	
+	let changeText = function() {
+		console.log("changeText");
+		
+		$("#display").text("두부");
+	}
+	
+	// $("#btn").on ~
+	testButton.on("click", function() {
+		console.log("버튼 클릭");
+		
+		// $("#display").text("두부");
+		changeText();
+		
+		$("#display").html("<font color='red'>황일영</font>");
+	})
+	/*
+		testButton 이라는 객체에 on 메서드를 쓴 것이다
+		testButton.css()
+		testButton.html()
+		testButton.on("click", function(){})
+		
+		파라미터 첫 번째가 "click"
+		파라미터 두 번째가 function(){} -> 동작
+	*/
+</script>
+
+</html>

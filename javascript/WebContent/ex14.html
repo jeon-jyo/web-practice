@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex14</title>
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>배열</h2>
+</body>
+
+<script type="text/javascript">
+	
+	window.console.log("========================================");
+
+	// 배열선언방법 1
+	var arr01 = new Array();
+	arr01[0]= 1;
+	arr01[1]= 100;
+	
+	console.log(arr01[0]);
+	console.log(arr01[1]);
+	
+	console.log("========================================");
+	
+	// 배열선언방법 2
+	var arr02 = [];
+	arr02[0] = 1;
+	arr02[1] = 2.5;
+	arr02[2] = "안녕";
+	arr02[3] = "hello!!";
+	arr02[4] = 5>3;
+	arr02[5] = function() { console.log("나는 익명함수"); }
+	
+	for(let i=0; i<arr02.length; i++) {
+		console.log(arr02[i]);
+	}
+								/*
+									..
+									true
+									ƒ () { console.log("나는 익명함수"); }
+								*/
+	
+	console.log("=====");
+	
+	arr02[5]();					// 나는 익명함수
+	// arr02[0]();	-> function만 가능
+	
+	console.log("========================================");
+
+	// 배열선언방법 3
+	var arr03 = [1, 2.5, "안녕", ["정우성", "박명수", "유재석"]];
+	console.log(arr03);
+								/*
+									(4) [1, 2.5, '안녕', Array(3)]
+									
+									0: 1: 2: ..
+									3: (3) ['정우성', '박명수', '유재석']
+								*/
+	console.log(arr03[3][1]);	// 박명수
+	
+	console.log("========================================");
+	
+	var nameArray = [];
+	
+	// 배열에 추가
+	nameArray.push("정우성");
+	nameArray.push("박명수");
+	console.log(nameArray);		// (2) ['정우성', '박명수']
+	
+	nameArray.push("유재석");
+	console.log(nameArray);		// (3) ['정우성', '박명수', '유재석']
+	
+	// 배열에서 삭제
+	nameArray.pop();
+	console.log(nameArray);		// (2) ['정우성', '박명수']
+	
+</script>
+
+</html>

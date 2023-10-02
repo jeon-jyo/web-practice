@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+<title>ex03</title>
+</head>
+<body>
+	
+	<!--클래스-->
+	<ul>
+		<li class="red"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="blue"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="red"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="blue"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="green"> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+	</ul>
+
+</body>
+	
+<script type="text/javascript">
+	
+	// let tags = document.getElementsByClassName("red");	
+	
+	// $(".red").css("color", "red");
+	// $(".blue").css("color", "blue");
+	$(".red, .blue").css("color", "blue");
+	
+	$("ul>li.red").css("color", "red");
+	
+</script>
+
+</html>

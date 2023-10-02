@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+
+<style>
+	.red {color: red; font-size: 20px; font-weight: bold;}
+	
+	.blue {color: blue; font-size: 50px; border: 1px solid black;}
+</style>
+
+<title>ex10</title>
+</head>
+<body>
+
+	<!--addClass(), removeClass()-->
+	<ul>
+		<li id="first" class="red">첫번째 아이템입니다.</li>
+		<li id="second" class="blue"><strong>두번째 아이템입니다.</strong></li>
+		<li id="third" class="del">세번째아이템입니다.</li>
+		<li><strong>네번째 아이템입니다.</strong></li>
+		<li>다섯번째 아이템입니다.</li>
+	</ul>
+
+</body>
+
+<script type="text/javascript">
+	
+	$("#first").removeClass("red");
+	$("#first").addClass("blue");
+	
+</script>
+
+</html>

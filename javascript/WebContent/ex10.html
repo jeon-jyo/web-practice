@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex10</title>
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>기명함수 익명함수</h2>
+</body>
+
+<script type="text/javascript">
+	
+	window.console.log("========================================");
+    
+	// 기명함수
+	// 선언  (리허설때 미리 조사된다)
+	function testA() {
+		console.log("testA() 기명 함수입니다.");
+	}
+	
+	// 사용
+	testA();  // testA() 기명 함수입니다.
+	
+	///////////////////////////////////////////////////////////////
+	
+	// 익명함수
+	// 변수에 익명함수 대입  (변수는 본방용)
+	let testB = function() {
+		console.log("testB() 익명 함수입니다.");
+	}
+	
+	// 사용
+	testB();
+
+</script>
+
+</html>

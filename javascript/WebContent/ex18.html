@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex18</title>
+	
+	<!-- 화면이 loading 되기 전에 작동 -->
+	<script type="text/javascript">
+	
+		window.onload = function() {
+			console.log("화면 모두 출력 후 작동");
+		}
+	
+	</script>
+	
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>이벤트</h2>
+	<div>
+		<h3 id="display">이름출력영역</h3>
+		<button id="btn" type="button">button</button>
+		<br>
+		<br>
+		<button>button 테스트 버튼<img src=""></button>	<!-- button 태그가 확장성 좋음 -->
+		<button onclick="">button 테스트 버튼</button>	<!-- 웬만하면 script 영역에 -->
+		<input type="button" value="input 테스트버튼">	<!-- 웬만하면 button 태그로 -->
+	</div>
+</body>
+
+<!-- 화면이 loading 된 후에 작동 - script는 순서대로 실행이 됨 -->
+<script type="text/javascript">
+	
+	// 필요한 태그를 js 객체화
+	// id로 가져오기
+	let testButton = document.getElementById("btn");
+	let testArea = document.getElementById("display");
+	
+	// testButton 클릭했을 때
+	testButton.onclick = function() {
+		// 이벤트 확인 -> 이벤트를 잡는다
+		console.log("버튼클릭");
+		
+		// id가 display인 태그의 텍스트 값을 새로운 문자열로 변경  
+		testArea.innerHTML = "버튼클릭";
+	}
+	
+	/*
+		상상
+		
+		let testButton = {
+			id: "btn",
+			tag: "button",
+			type: "button",
+			innerHTML: "테스트버튼",
+			onclick: function(){}
+		}
+		
+		let testArea = {
+			id: "display",
+			tag: "h3",
+			innerHTML: "이름출력영역",
+			onclick: function(){}
+		}
+	*/
+</script>
+
+</html>

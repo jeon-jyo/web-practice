@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex17</title>
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>리스트개념(배열+객체)</h2>
+</body>
+
+<script type="text/javascript">
+	
+	window.console.log("========================================");
+
+	// 빈 배열 생성	-> 리스트를 만들기
+	let personList = [];
+	
+	// 객체를 만들고 데이터 넣기(정우성)
+	let personVo01 = {
+		name: "정우성",
+		hp: "010-2222-2222",
+		company: "02-2222-2222"
+	};
+	// 객체를 만들고 데이터 넣기(박명수)
+	let personVo02 = {
+		name: "박명수",
+		hp: "010-3333-3333",
+		company: "02-3333-3333"
+	};
+	// 객체를 만들고 데이터 넣기(유재석)
+	let personVo03 = {
+		name: "유재석"
+	};
+	personVo03.hp = "010-4444-4444";
+	personVo03.company = "02-4444-4444";
+	
+	console.log(personVo01);
+	console.log(personVo02);
+	console.log(personVo03);
+	
+	console.log("=====");
+	
+	// 배열에 넣기
+	personList[0] = personVo01;
+	personList[1] = personVo02;
+	personList.push(personVo03);
+	
+	// 출력
+	console.log(personList);
+	console.log(personList[1].company);
+	/*
+		0: {name: '정우성', hp: '010-2222-2222', company: '02-2222-2222'}
+		1: {name: '박명수', hp: '010-3333-3333', company: '02-3333-3333'}
+		2: {name: '유재석', hp: '010-4444-4444', company: '02-4444-4444'}
+	*/
+</script>
+
+</html>

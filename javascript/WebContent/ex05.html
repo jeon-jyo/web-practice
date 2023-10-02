@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex05</title>
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>문제</h2>
+	주어진 과목번호를 통해 강의실 번호를 출력하는 프로그램을 작성하세요(브라우저에 출력)<br>
+ 	과목 code 값이<br>
+ 	1이면 "R101호"<br>
+    2이면 "R202호"<br>
+    3이면 "R303호"<br>
+    4이면 "R404호"<br>
+    나머지는 "상담원에게 문의하세요"<br><br>
+</body>
+
+<script type="text/javascript">
+	
+	window.console.log("========================================");
+    
+	let code = prompt("과목코드를 입력하세요");
+	console.log(code);
+	console.log(typeof code);	// string
+	
+	let number = parseInt(code)
+	console.log(number);
+	console.log(typeof number);	// number
+	
+	switch(code) {
+		case "1":
+			console.log("R101호");
+			document.write("R101호");
+			break;
+			
+		case "2":
+			console.log("R202호");
+			document.write("R202호");
+			break;
+			
+		case "3":
+			console.log("R303호");
+			document.write("R303호");
+			break;
+			
+		case "4":
+			console.log("R404호");
+			document.write("R404호");
+			break;	
+			
+		default:
+			console.log("상담원에게 문의하세요");
+			document.write("상담원에게 문의하세요");
+			break;	
+	}
+	
+</script>
+
+</html>

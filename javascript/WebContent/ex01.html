@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex01</title>
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>기본 데이터 타입</h2>
+</body>
+
+<script type="text/javascript">
+	
+	window.console.log("========================================");
+    
+	console.log("#타입확인");
+	<!--기본자료형은 number, string, boolean 3가지가 있다-->
+	console.log(typeof 1);				// number
+	console.log(typeof 1.5);			// number
+	console.log(typeof "한");			// string
+	console.log(typeof "안녕하세요");	// string
+	console.log(typeof (6>5));			// boolean
+	console.log(typeof (6<5));			// boolean
+	
+	console.log("========================================");
+	
+	console.log("#number형");
+	console.log(13+5);		// 18
+	console.log(13-5);		// 8
+	console.log(13*5);		// 65
+	console.log(13/5);		// 2.6
+	console.log(13%5);		// 3
+	console.log(13+5.2);	// 18.2
+	console.log(5+3*2);		// 11
+	console.log((5+3)*2);   // 16
+	
+	console.log("========================================");
+	
+	console.log("#string형");
+	console.log("동해물과 백두산이");
+	console.log('동해물과 백두산이');
+	
+	// " ' \ 등 을 쓰려면 \" \' \\
+	console.log("동해물과 \"백두산\"이");	// 동해물과 "백두산"이
+	console.log('동해물과 "백두산"이');		// 동해물과 "백두산"이
+	
+	console.log('동해물과 \'백두산\'이');	// 동해물과 '백두산'이
+	console.log("동해물과 '백두산'이");		// 동해물과 '백두산'이
+	
+	console.log("동해물과 \n백두산이");
+	console.log("동해물과 \t백두산이");
+	console.log("동해물과 \\백두산이");		// 동해물과 \백두산이
+	
+	console.log("========================================");
+	
+	console.log("#boolean형");
+	console.log( 52 > 273 );    // false
+	console.log( 52 < 273 );    // true
+	console.log( 52 == 52 );    // true
+
+	console.log("========================================");
+	console.log("#&& || ! 연산자 확인");
+	console.log( (5>3)&&(5<3) );	// T && F	-> false
+	console.log( (5>3)||(5<3) );	// T || F	-> true
+	console.log( !((5>3)||(5<3)) );	// !(T||F)	-> !T	-> false
+	
+</script>
+
+</html>

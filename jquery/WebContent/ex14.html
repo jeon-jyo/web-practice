@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+<title>ex14</title>
+
+<style>
+	ul {
+		background-color: lightcoral;
+		padding: 25px;
+	}
+	
+	li {
+		background-color: lightgray;
+		border: 1px solid black;
+	}
+</style>
+
+</head>
+<body>
+	
+	<ul>
+		<li id="first" class="red" data-bno="1" data-pname="정우성">첫번째 아이템입니다.</li>
+		<li id="second" class="blue" data-bno="2" data-pname="박명수"><strong>두번째 아이템입니다.</strong></li>
+		<li id="third" class="del" data-bno="3" data-pname="유재석">세번째 아이템입니다.</li>
+		<li data-bno="4" data-pname="공유"><strong>네번째 아이템입니다.</strong></li>
+	</ul>
+	<button id="btn" type="button">li요소추가</button>
+	<br><br>
+	<button id="dataBtn" type="button">전체데이터수집</button>
+	
+</body>
+
+<script type="text/javascript">
+	
+	$("#btn").on("click", function() {
+		console.log("===li요소추가 클릭===");
+		
+		let str = "";
+		str += "<li data-bno='5' data-pname='이효리'>다섯번째 아이템입니다.</li>";
+		str += "<li data-bno='6' data-pname='아이유'>여섯번째 아이템입니다.</li>";
+		str += "<li data-bno='7' data-pname='전정국'>일곱번째 아이템입니다.</li>";
+		
+		$("ul").append(str);
+	})
+	
+	// li 클릭 - 추가된 아이템은 그림만 그려져서 onclick 안됨
+	$("li").on("click", function() {
+		console.log("===li 클릭===");
+
+		let $this = $(this);
+		let str = $this.text();
+		console.log(str);			// 첫번째 아이템입니다.
+	})
+	
+	// ul 클릭 - ul, li 전부
+	$("ul").on("click", function() {
+		console.log("===ul 클릭===");
+	})
+	
+	// li 에게 위임 -> li만 클릭 - 새로 추가된 아이템이 있을 때 사용
+	$("ul").on("click", "li", function() {
+		console.log("===ul의 li 클릭===");
+		
+		let $this = $(this);
+		let str = $this.text();
+		console.log(str);			// 다섯번째 아이템입니다.
+	})
+	
+	$("#dataBtn").on("click", function() {
+		console.log("===전체데이터수집 클릭===");
+		
+		let liTags = $("li");
+		console.log(liTags);		// jQuery.fn.init(7) [li#first.red, li#second.blue, li#third.del, li, li, li, li, prevObject: jQuery.fn.init(1), context: document, selector: 'li']
+		
+		console.log("=====");
+		
+		// js for문 사용
+		for(let i = 0; i < liTags.length; i++) {
+			let bNo = $(liTags[i]).data("bno");
+			console.log(bNo);
+		}
+		
+		console.log("=====");
+		
+		// jquery each() - 반복문
+		let boardList = [];
+		$("li").each(function(index, item) {
+			let $this = $(this);
+			let bNo = $this.data("bno");
+			let pName = $this.data("pname");
+			let str = $this.text();
+			console.log(bNo + " " + pName + " : " + str);	// 1 정우성 : 첫번째 아이템입니다.
+			
+			let boardVo = {
+				boardNo: bNo,
+				personName: pName,
+				content: str
+			}
+			boardList.push(boardVo);
+		})
+		console.log(boardList);		// (4) [{…}, {…}, {…}, {…}]
+									// .. 6: {boardNo: 7, personName: '전정국', content: '일곱번째 아이템입니다.'}
+	})
+	
+</script>
+
+</html>

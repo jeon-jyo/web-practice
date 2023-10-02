@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex13</title>
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>변수의 범위</h2>
+</body>
+
+<script type="text/javascript">
+	
+	window.console.log("========================================");
+
+	let x;	// *전역변수? 지역변수? 상수?
+	
+	function testFunc() {
+		let y;      // 전역변수? *지역변수? 상수?
+
+		x = 10;     // *전역변수? 지역변수? 상수?
+		y = 20;     // 전역변수? *지역변수? 상수? 
+		z = 30;     // *전역변수? 지역변수? 상수?
+		
+		if(y == 20) {
+			let b = 40;		// 전역변수? *지역변수? 상수?
+			b++;
+			console.log("b = " + b);	// 41
+		}
+		
+		// 이곳에서 변수 b, x, y, z에 접근가능?
+		// console.log("b = " + b);   // 불가능
+		console.log("x = " + x);	// 가능
+		console.log("y = " + y);	// 가능
+		console.log("z = " + z);	// 가능
+	}
+	
+	testFunc();
+	
+	console.log("========================================");
+	
+	// 이곳에서 변수 b, x, y, z에 접근가능?
+	// console.log("b = " + b);   // 불가능
+	console.log("x = " + x);	// 가능
+	//console.log("y = " + y);	// 불가능
+	console.log("z = " + z);	// 가능
+
+</script>
+
+</html>

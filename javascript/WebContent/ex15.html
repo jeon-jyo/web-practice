@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex15</title>
+</head>
+<body>
+	<h1>자바스크립트</h1>
+	<h2>객체</h2>
+</body>
+
+<script type="text/javascript">
+	
+	window.console.log("========================================");
+
+	let guestbookVo = {
+		name: "황일영",
+		password: "1234",
+		content: "내용입니다.",
+		showInfo: function() {
+			console.log(this.name + ", " + this.password + ", " + this.content);
+		}
+	};
+	console.log(guestbookVo.name);
+	console.log(guestbookVo.password);
+	console.log(guestbookVo.content);
+	
+	console.log("=====");
+	
+	console.log(guestbookVo.showInfo());	// 함수 호출 후 반환값 출력 -> undefined
+											/*
+												황일영, 1234, 내용입니다.
+												undefined
+											*/
+											
+	console.log("=====");
+	
+	console.log(guestbookVo.showInfo);
+											/*
+												ƒ () {
+													console.log("showInfo");
+													console.log(this.name + ", " + this.password + ", " + this.content);
+													console.log("showInfo");
+												}
+											*/
+	guestbookVo.showInfo();					// 황일영, 1234, 내용입니다.
+	
+	console.log("========================================");
+	
+	let guestVo = {};
+	guestVo.name = "정우성";
+	guestVo.password = "45434543";
+	guestVo.content = "정우성 다녀감";
+	
+	console.log(guestVo);					// {name: '정우성', password: '45434543', content: '정우성 다녀감'}
+	console.log(guestVo.name);
+	console.log(guestVo.password);
+	console.log(guestVo.content);
+	
+	console.log("=====");
+	
+	let info = function() {
+		console.log(this.name + ", " + this.password + ", " + this.content);
+	}
+	guestVo.showInfo = info;
+	console.log(guestVo.showInfo());
+	
+	console.log("=====");
+	
+	console.log(guestVo.name);
+	console.log(guestVo["name"]);
+	
+</script>
+
+</html>

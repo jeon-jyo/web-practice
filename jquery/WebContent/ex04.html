@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+<title>ex04</title>
+</head>
+<body>
+	
+	<!--속성, 속성=값-->
+	<ul>
+		<li class="first"> 텍스트1 텍스트1 텍스트1 텍스트1 텍스트1 </li>
+		<li class="second"> 텍스트2 텍스트2 텍스트2 텍스트2 텍스트2 </li>
+		<li> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="first"> 텍스트1 텍스트1 텍스트1 텍스트1 텍스트1 </li>
+		<li class="second"> 텍스트2 텍스트2 텍스트2 텍스트2 텍스트2 </li>
+		<li> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="first"> 텍스트1 텍스트1 텍스트1 텍스트1 텍스트1 </li>
+		<li class="second"> 텍스트2 텍스트2 텍스트2 텍스트2 텍스트2 </li>
+		<li> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li class="first"> 텍스트1 텍스트1 텍스트1 텍스트1 텍스트1 </li>
+		<li class="second"> 텍스트2 텍스트2 텍스트2 텍스트2 텍스트2 </li>
+		<li> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+	</ul>
+	
+	<input type="text" name="id" value="id">
+	<input type="text" name="name" value="name">
+	<input type="text" name="password" value="password">
+	
+</body>
+	
+<script type="text/javascript">
+	
+	$("[class]").css("color", "red");
+	$("[class='first']").css("color", "blue");
+	$('.first').css("color", "green");
+	
+	$("[name=id]").css("color", "red");
+	$("input[name='password']").css("color", "blue");
+	$("input[name]").css("color", "green");
+	
+</script>
+
+</html>
